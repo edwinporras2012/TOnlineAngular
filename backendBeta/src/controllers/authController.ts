@@ -1,8 +1,10 @@
 import { Request, Response } from "express";
 import User from "../models/user";
 import { IUser } from "../models/Iuser";
+import Product from "../models/productos/productos";
 
 import jwt from "jsonwebtoken";
+import { IProductos } from "../models/productos/IProductos";
 
 //Registrar un usuario
 export const signup = async (req: Request, res: Response)=>{
@@ -24,6 +26,17 @@ export const signup = async (req: Request, res: Response)=>{
     const token:string = jwt.sign({ _id: saveUser._id}, `${process.env.TOKEN_SECRET}`); 
     // res.json(token); //TRAE EL TOKEN UNICAMENTE
     res.header('auth-token', token).json(saveUser); // TRAE EL TOKEN PERO LO GUARDA EN LOS HEADERS
+}
+
+export const product = async (req: Request, res: Response)=>{
+    const product: IProductos = new Product({
+        nombre: req.body.nombre,
+        precio: req.body.precio,
+        existencia: req.body.existencia
+    })
+    // console.log('RESPUESTA REGISTRO PRODUCTO ', req.body);
+    res.send('Producto registrado');
+    await product.save();
 }
 
 // Hacer un login
@@ -58,5 +71,14 @@ export const profile = async (req: Request, res: Response)=>{
         return res.status(404).json('Usuario no encontrado');
         res.json(user)
     }
+
+}
+
+
+export const productlist = async (req: Request, res: Response)=>{
+
+    const product = await Product.find(product => product);
+    res.send(product);
+    console.log('RESPUESTA 1', product); // REVISAR PORQUE NO FUNCIONA ***************
 
 }
