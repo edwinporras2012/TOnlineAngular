@@ -1,7 +1,12 @@
-import mongoose from "mongoose";
+import { createPool } from "mysql2/promise";
 
-mongoose.connect('mongodb://localhost/test',{
-
-})
-    .then(db => console.log('Database is connected'))
-    .catch(err => console.log(err));
+export async function connect() {
+    const conexion =  await createPool({
+        host: 'localhost',
+        user: 'edwinporras2012',
+        password: 'rux69jyf3pta',
+        database: 't_online',
+        connectionLimit: 10
+    });
+    return conexion;
+}
