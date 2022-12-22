@@ -17,7 +17,7 @@ export class ProductService {
     return this.httpclient.post<Product>(baseUrl, productBody)
   }
   viewProduct(productId:any):Observable<Product>{
-    const baseUrl= environment.API_BACKEND_PRODUCT + "/by/" + productId;
+    const baseUrl= environment.API_BACKEND_PRODUCT_CATEGORY + "/byproduct/" + productId;
     return this.httpclient.get<Product>(baseUrl)
   }
   viewAllProduct():Observable<Product>{
@@ -25,7 +25,7 @@ export class ProductService {
     return this.httpclient.get<Product>(baseUrl)
   }
   updateProduct(productId:any, productBody:any):Observable<Product>{
-    const baseUrl= environment.API_BACKEND_PRODUCT + productId;
+    const baseUrl= environment.API_BACKEND_PRODUCT + "/"+ productId;
     return this.httpclient.put<Product>(baseUrl, productBody)
   }
   deleteProduct(productId:any):Observable<Product>{
@@ -33,8 +33,12 @@ export class ProductService {
     return this.httpclient.delete<Product>(baseUrl)
   }
   searchCategoryProduct(categoryId:any):Observable<Product>{
-    const baseUrl= environment.API_BACKEND_CATEGORY + "by/" + categoryId;
+    const baseUrl= environment.API_BACKEND_PRODUCT_CATEGORY + "/bycategory/" + categoryId;
     console.log('URL', baseUrl);
+    return this.httpclient.get<Product>(baseUrl)
+  }
+  getAllProductsByCategorySelect():Observable<Product>{
+    const baseUrl= environment.API_BACKEND_PRODUCT_CATEGORY;
     return this.httpclient.get<Product>(baseUrl)
   }
   searchDateProduct(dateParams:any):Observable<Product>{

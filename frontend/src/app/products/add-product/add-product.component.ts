@@ -14,7 +14,7 @@ export class AddProductComponent implements OnInit {
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
-    this.productService.viewAllProduct().subscribe(data=>{
+    this.productService.getAllProductsByCategorySelect().subscribe(data=>{
       this.productList = data;
       console.log('DATA SELECT **', this.productList)
     })
@@ -28,7 +28,7 @@ export class AddProductComponent implements OnInit {
       nombre: form.value.product_name,
       descripcion: form.value.product_description,
       precio: form.value.product_precio,
-      img: '',
+      img: form.value.product_img,
       disponibilidad: 1,
       color: form.value.product_color,
     }

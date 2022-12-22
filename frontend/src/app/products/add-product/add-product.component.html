@@ -1,5 +1,5 @@
 <h2>Agregar un nuevo producto</h2>
-<form (submit)="addNewProduct(addProductForm)" #addProductForm="ngForm" class="row g-3">
+<form (submit)="addNewProduct(addProductForm)" #addProductForm="ngForm" class="row g-3 formAdd">
   <div class="col-md-4">
     <label for="validationServer01" class="form-label">Nombre del producto</label>
     <input type="text" class="form-control is-valid" id="validationServer01" name="product_name" value="Ingrese Nombre del producto" required ngModel>
@@ -7,13 +7,13 @@
       Looks good!
     </div>
   </div>
-  <div class="col-md-4">
+  <!-- <div class="col-md-4">
     <label for="validationServer02" class="form-label">Category Id</label>
     <input type="text" class="form-control is-valid" id="validationServer02" name="product_category" value="Ingrese Categoria del producto" required ngModel>
     <div class="valid-feedback">
       Looks good!
     </div>
-  </div>
+  </div> -->
   <div class="col-md-4">
     <label for="validationServer02" class="form-label">Descripcion</label>
     <input type="text" class="form-control is-valid" id="validationServer03" name="product_description" value="Ingrese Descripcion del producto" required ngModel>
@@ -43,7 +43,7 @@
     <select class="form-select is-invalid" id="validationServer04" aria-describedby="validationServer04Feedback" name="product_disponibilidad" required ngModel>
       <option selected disabled value="">Selecciona...</option>
       <option value="1">Si</option>
-      <option value="0">Si</option>
+      <option value="0">No</option>
     </select>
     <div id="validationServer04Feedback" class="invalid-feedback">
       Por favor selecciona una opcion valida.
@@ -68,6 +68,10 @@
     <div id="validationServer05Feedback" class="invalid-feedback">
       Please provide a valid zip.
     </div>
+  </div>
+  <div class="mb-3">
+    <input type="file" multiple class="form-control" name="product_img" aria-label="file example" required ngModel>
+    <div class="invalid-feedback">Example invalid form file feedback</div>
   </div>
   <div class="col-12">
     <div class="form-check">

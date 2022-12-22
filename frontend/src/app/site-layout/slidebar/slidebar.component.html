@@ -2,6 +2,9 @@
 <div class="list-group">
     <a href="products/" class="list-group-item" >Todos los productos</a>
 </div>
+<div class="list-group">
+    <a href="products/add-product" class="list-group-item" >Agregar nuevo producto</a>
+</div>
 <div class="list-group" *ngFor="let catg of categoryList">
     <a href="products/category/{{catg.id_categoria}}" class="list-group-item" >{{catg.nombre}}</a>
 </div>

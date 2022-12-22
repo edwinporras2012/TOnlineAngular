@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   // Consumos:
   API_BACKEND_PRODUCT: "http://localhost:3000/api/products",
+  API_BACKEND_PRODUCT_CATEGORY: "http://localhost:3000/api/catg-product",
   API_BACKEND_CATEGORY: "http://localhost:3000/api/categories/",
 
   //Assets:

@@ -5,6 +5,7 @@ import IndexRoutes from "./routes/index.routes";
 import UserRoutes from "./routes/user.routes";
 import ProductRoutes from "./routes/product.routes";
 import CategoryRoutes from "./routes/category.routes";
+import CategoryProductRoutes from "./routes/catg-product.routes";
 
 export class App{
 
@@ -39,6 +40,7 @@ export class App{
         this.app.use('/api/users', UserRoutes);
         this.app.use('/api/products', ProductRoutes);
         this.app.use('/api/categories', CategoryRoutes);
+        this.app.use('/api/catg-product', CategoryProductRoutes);
     }
 
     async listen(){
