@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/interfaces/Iproduct';
 import { ProductService } from "../product.service";
+import { AngularFireStorage } from "@angular/fire/storage";
 
 @Component({
   selector: 'app-add-product',
@@ -11,13 +12,22 @@ export class AddProductComponent implements OnInit {
 
   productList: Product | any;
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private storage: AngularFireStorage) { }
 
   ngOnInit(): void {
     this.productService.getAllProductsByCategorySelect().subscribe(data=>{
       this.productList = data;
       console.log('DATA SELECT **', this.productList)
     })
+  }
+
+  onUpload(e:any){
+    console.log('SUBIR ', e.target.files)
+    const id = Math.random().toString(36).substring(2);
+    const file = e.target.files;
+    const filePath = 'upload/imagen.png';
+    const ref = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, file);
   }
 
   addNewProduct(form:any){

@@ -19,6 +19,7 @@ const routes: Routes = [
   { path: 'category/:id', component: ViewProductByCategoryComponent },
   { path: 'delete-product/:id', component: DeleteProductComponent },
   { path: 'update-product/:id', component: UpdateProductComponent },
+  // { path: 'test', component: UpdateProductComponent },//** '**' */
 ];
 
 @NgModule({

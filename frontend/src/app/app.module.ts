@@ -5,19 +5,41 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PedidosModule } from "./pedidos/pedidos.module";
 import { SiteLayoutModule } from './site-layout/site-layout.module';
+import { BUCKET } from '@angular/fire/storage';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireStorageModule } from '@angular/fire/storage'; // REVISAR
+import { environment } from 'src/environments/environment';
+import { UserRoutingModule } from './user/user-routing.module';
+import { AngularFireAuth } from "@angular/fire/auth";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegisterModule } from './user/register/register.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     PedidosModule,
     HttpClientModule,
-    SiteLayoutModule
+    SiteLayoutModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule,
+    UserRoutingModule,
+    RegisterModule
+    // ReactiveFormsModule,
+    // FormsModule 
   ],
-  providers: [],
+  providers: [
+    // {provide: BUCKET, }
+    AngularFireAuth,
+    // RegisterModule
+  ],
+  exports:[
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

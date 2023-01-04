@@ -70,7 +70,7 @@
     </div>
   </div>
   <div class="mb-3">
-    <input type="file" multiple class="form-control" name="product_img" aria-label="file example" required ngModel>
+    <input type="file" accept=".png, .jpg" (change)="onUpload($event)" multiple class="form-control" name="product_img" required ngModel>
     <div class="invalid-feedback">Example invalid form file feedback</div>
   </div>
   <div class="col-12">
