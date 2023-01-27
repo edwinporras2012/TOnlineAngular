@@ -24,6 +24,13 @@ export async function getUserId(req:Request, res:Response): Promise<Response> {
     return res.json(users[0])
 }
 
+export async function getUserEmail(req:Request, res:Response): Promise<Response> {
+    const email:string = req.body.email;
+    const conn = await connect();
+    const users = await conn.query('SELECT * FROM usuarios WHERE email = ?', [email]);
+    return res.json(users[0])
+}
+
 export async function deleteUserId(req:Request, res:Response): Promise<Response> {
     const id = req.params.userId;
     const conn = await connect();

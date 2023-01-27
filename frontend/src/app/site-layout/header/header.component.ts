@@ -12,8 +12,10 @@ import { Observable } from 'rxjs';
 })
 export class HeaderComponent implements OnInit, AfterViewInit {
 
-  constructor(private AuthService: AuthService, private afsAuth: AngularFireAuth) { }
-
+  constructor(private AuthService: AuthService, private afsAuth: AngularFireAuth) { 
+    this.loading = true;
+  }
+  public loading: boolean;
   public isLogged: boolean = false;
   public email: any = '';
 
@@ -32,8 +34,10 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.AuthService.isAuth().subscribe(auth=>{
       console.log('Nuevo estado: ', auth);
-      this.email = auth?.email;      
+      this.email = auth?.email;  
+      console.log('MIRAR', this.email)    
       if (auth) {
+        // this.loading = false;
         this.isLogged = true;
       }else{
         this.isLogged = false;

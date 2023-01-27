@@ -1,4 +1,4 @@
-<h2>Registro de usuario</h2>
+<!-- <h2>Registro de usuario</h2>
 <form (submit)="onSubmit2(regUserForm)" #regUserForm="ngForm">
     <div class="mb-3">
         <label class="form-label">Email</label>
@@ -10,7 +10,28 @@
     </div>
     <div class="mb-3">
         <label class="form-label">Password</label>
-        <input type="password" class="form-control" name="password" ngModel>
+        <input type="password" class="form-control" formControlName="passwords" ngModel>
+        <div *ngIf="password?.errors?.passwordValidation">
+            {{password?.errors?.passwordValidation.message}}
+        </div>
+    </div>
+    <input type="submit" value="Enviar">
+</form> -->
+
+
+<h2>Registro de usuario</h2>
+<form (submit)="onSubmit2(regUserForm)" #regUserForm="ngForm">
+    <div class="mb-3">
+        <label class="form-label">Email</label><span class="validadorItem">{{searchUser}} -- {{validador}} </span>
+        <input type="text" class="form-control" name="email" ngModel>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Nombre</label>
+        <input type="text" class="form-control" name="nombre" ngModel>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control" name="passwords" ngModel>
     </div>
     <input type="submit" value="Enviar">
 </form>

@@ -1,37 +1,44 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from "@angular/fire/auth";
-import { Router } from '@angular/router';
+import { Router, ɵROUTER_PROVIDERS } from '@angular/router';
 import firebase from 'firebase/app'; 
 import { AuthService } from 'src/app/services/auth.service';
+import 'firebase/auth';
 import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers: [ɵROUTER_PROVIDERS]
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private AuthService: AuthService, public afAuth: AngularFireAuth, private router: Router) { }
+  constructor(private AuthService: AuthService, public afAuth: AngularFireAuth, private router: Router) { 
+    this.loading = true;
+  }
   public isLogged: boolean = false;
   provider:any;
   user:any;
+  public loading: boolean;
 
   ngOnInit(): void {
-    this.getCurrentUser();
     var provider = new firebase.auth.GoogleAuthProvider();
     this.provider = provider;
     firebase.auth().onAuthStateChanged(user=> {
       this.user = user;
     });
+    this.getCurrentUser();
   }
 
   async getCurrentUser(){
+    this.loading= false;
     this.AuthService.isAuth().subscribe(auth=>{
       console.log('ESTADO= ', auth)
       if (auth) {
         console.log('Usuario logeado', auth?.email);
         this.isLogged = true;
+        // this.router.navigate(['']);
       }else{
         console.log('Usuario NO logeado', auth);
         this.isLogged = false;

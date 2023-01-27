@@ -19,6 +19,16 @@ export class ViewAllProductComponent implements OnInit {
     this.productService.viewAllProduct().subscribe(data=>{
       this.productList = data;
       console.log('DATA VIEW ALL ', this.productList)
+      for (let index = 0; index < this.productList.length; index++) {
+        const element = this.productList[index];
+        if (element.marca == 'hp'.toLocaleUpperCase()) {
+          // SE PUEDE GUARDAR EN UNA VARIABLE PARA SER REEMPLAZADA userValido
+          console.log('DISPONIBLES')
+        }else{
+          console.log('NO DISPONIBLES')
+        }
+      }
+      
     })
   }
   // images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);

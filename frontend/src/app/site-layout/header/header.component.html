@@ -20,21 +20,25 @@
                 </li>
                 <button (click)="onLogout()">SALIR</button>
             </ul>
-            <form class="d-flex">
+            <!-- <form class="d-flex">
                 <button class="btn btn-outline-dark" type="submit">
                     <i class="bi-cart-fill me-1"></i>
                     Cart
                     <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                 </button>
-            </form>
-            <p *ngIf="!isLogged; else cambio">
+            </form> -->
+           
+            <ng-container *ngIf="email == undefined">
                 <a class="btn btn-outline-dark" href="users/login">
                     Iniciar sesion
                 </a>
-            </p>
-            <ng-template #cambio>
+                <p>CERRAR</p>
+            </ng-container>
+            <ng-container *ngIf="email">
                 Bienvenido {{email}}
-            </ng-template>
+                <!-- <p>BIEN</p> -->
+            </ng-container>
+           
             <!-- <p >
                 Bienvenido {{email}}
             </p> -->

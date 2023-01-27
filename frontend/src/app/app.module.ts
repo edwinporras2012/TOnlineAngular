@@ -13,10 +13,14 @@ import { UserRoutingModule } from './user/user-routing.module';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterModule } from './user/register/register.module';
+import { ValidationformDirective } from './validation/validationform.directive';
+import { UsernameUniqueDirective } from './validation/username-unique.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ValidationformDirective,
+    UsernameUniqueDirective,
   ],
   imports: [
     BrowserModule,

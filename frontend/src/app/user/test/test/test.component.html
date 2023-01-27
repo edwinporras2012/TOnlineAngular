@@ -1,0 +1,30 @@
+<p>test works!</p>
+
+<div class="main-wrapper">
+    <div class="wrapper">
+        <button (click)="addSkill()">Agregar skill</button>
+        <form [formGroup]="formParent" class="form-parent">
+            <div class="form-field">
+                <input type="text" placeholder="Ingresa nombre" formControlName="name">
+            </div>
+
+            <div class="form-grid" formArrayName="skills">
+                <div class="form-field" *ngFor="let skill of getControl('skills', formParent)?.controls; index as i">
+                    <div class="form-block" [formGroupName]="i">
+                        <div class="form-field">
+                            <input type="text" placeholder="lenguaje" formControlName="lenguaje">
+                        </div>
+                        <div class="form-field">
+                            <input type="text" placeholder="projectUrl" formControlName="projectUrl">
+                        </div>
+                        <div class="form-field">
+                            <input type="text" placeholder="expYear" formControlName="expYear">
+                        </div>
+                        <button (click)="removeValidation(i, 'expYear')">Remove</button>13:22
+                        <button (click)="addValidation(i, 'expYear')">Add</button>13:22
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

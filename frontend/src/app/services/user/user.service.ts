@@ -15,4 +15,14 @@ export class UserService {
     const baseUrl= environment.API_BACKEND_USER;
     return this.httpclient.post<User>(baseUrl, userBody);
   }
+
+  obtenerUsernames(): Observable<string[]>{
+    const baseUrl= environment.API_BACKEND_USER;
+    return this.httpclient.get<string[]>(baseUrl);
+  }
+
+  obtenerUserUnico(userEmail:any){
+    const baseUrl= environment.API_BACKEND_USER + '/userEmail';
+    return this.httpclient.get<User>(baseUrl, userEmail)
+  }
 }
